@@ -60,3 +60,6 @@ with open(csv_filename, 'w', newline='', encoding='utf-8') as f:
 
 print(f"\nCSV file generated: {csv_filename}")
 print(f"Images saved in: ./{image_dir}/")
+
+
+#printhellow world
