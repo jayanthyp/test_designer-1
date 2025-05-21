@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designer Blouse Gallery - Dark Theme</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --sidebar-bg: #181a20;
+      --main-bg: #101014;
+      --card-bg: #23243a;
+      --accent1: #a259ff;
+      --accent2: #f24e1e;
+      --accent3: #43e7ad;
+      --accent4: #1fa2ff;
+      --text-main: #fff;
+      --text-secondary: #b0b3c6;
+      --button-bg: #23243a;
+      --button-active: #a259ff;
+      --button-hover: #23243a;
+      --border-radius: 18px;
+      --transition: 0.2s;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--main-bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: 250px;
+      background: var(--sidebar-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.2rem 1.2rem 1.2rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+    }
+    .sidebar .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent1);
+      margin-bottom: 2.5rem;
+      letter-spacing: 1px;
+    }
+    .sidebar .user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .sidebar .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #fff;
+      font-weight: 600;
+    }
+    .sidebar .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar .user-info .name {
+      font-weight: 500;
+      color: var(--text-main);
+      font-size: 1rem;
+    }
+    .sidebar .user-info .points {
+      color: var(--accent1);
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+    .sidebar nav {
+      flex: 1;
+    }
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar nav ul li {
+      margin-bottom: 1.2rem;
+    }
+    .sidebar nav ul li a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 1rem;
+      border-radius: var(--border-radius);
+      transition: background var(--transition), color var(--transition);
+    }
+    .sidebar nav ul li a.active, .sidebar nav ul li a:hover {
+      background: var(--button-active);
+      color: #fff;
+    }
+    .sidebar .sidebar-section {
+      margin-top: 2rem;
+    }
+    .sidebar .sidebar-section h4 {
+      color: var(--accent1);
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+      font-weight: 600;
+    }
+    .sidebar .sidebar-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar .sidebar-section ul li {
+      margin-bottom: 0.7rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .main-content {
+      margin-left: 250px;
+      width: 100%;
+      background: var(--main-bg);
+      min-height: 100vh;
+      padding-bottom: 2rem;
+    }
+    .top-section {
+      padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+    }
+    .featured-guides {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      overflow-x: auto;
+    }
+    .featured-card {
+      min-width: 320px;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: 0 2px 12px #0002;
+      position: relative;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+    .featured-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 4px 24px #0004;
+    }
+    .featured-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      display: block;
+    }
+    .featured-card .featured-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--accent1);
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .featured-card .featured-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      margin: 1rem 1rem 0.5rem 1rem;
+    }
+    .featured-card .featured-desc {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin: 0 1rem 1rem 1rem;
+    }
+    .section-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--accent1);
+      margin-bottom: 1.2rem;
+      letter-spacing: 1px;
+    }
+    .community-filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .community-filters button {
+      background: var(--button-bg);
+      color: var(--text-secondary);
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1.3rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      font-weight: 500;
+    }
+    .community-filters button.active, .community-filters button:hover {
+      background: var(--accent1);
+      color: #fff;
+    }
+    .masonry-grid {
+      column-count: 4;
+      column-gap: 1.5rem;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 1200px) {
+      .masonry-grid { column-count: 3; }
+    }
+    @media (max-width: 900px) {
+      .masonry-grid { column-count: 2; }
+      .main-content { margin-left: 0; }
+      .sidebar { position: static; width: 100%; min-height: auto; flex-direction: row; padding: 1rem; }
+    }
+    @media (max-width: 600px) {
+      .masonry-grid { column-count: 1; }
+      .top-section { padding: 1rem; }
+    }
+    .masonry-item {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      width: 100%;
+      box-shadow: 0 2px 12px #0002;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+      position: relative;
+    }
+    .masonry-item:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 4px 24px #0004;
+    }
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid #222;
+      transition: filter 0.2s;
+    }
+    .masonry-item .masonry-desc {
+      padding: 1rem 1.2rem 1.2rem 1.2rem;
+    }
+    .masonry-item .masonry-title {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .masonry-item .masonry-meta {
+      color: var(--accent1);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .masonry-item .masonry-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.95);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 32px #000a;
+      border: 3px solid var(--accent1);
+      background: #181a20;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lightbox-content img {
+      max-width: 70vw;
+      max-height: 60vh;
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
+    }
+    .lightbox-content .masonry-title {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .lightbox-content .masonry-text {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10001;
+      transition: color var(--transition);
+    }
+    .lightbox-close:hover { color: var(--accent1); }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div>
+      <div class="logo">Designer Blouse Gallery</div>
+      <div class="user">
+        <div class="user-avatar">T</div>
+        <div class="user-info">
+          <span class="name">ThinkGenAceMuse</span>
+          <span class="points"><i class="fas fa-gem"></i> 150</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#"><i class="fas fa-book"></i> Library</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-section">
+        <h4>AI Tools</h4>
+        <ul>
+          <li><i class="fas fa-image"></i> Image</li>
+          <li><i class="fas fa-video"></i> Video <span style="background:var(--accent2);color:#fff;padding:2px 7px;border-radius:8px;font-size:0.8em;margin-left:4px;">New</span></li>
+          <li><i class="fas fa-bolt"></i> Flow State</li>
+          <li><i class="fas fa-paint-brush"></i> Realtime Canvas</li>
+          <li><i class="fas fa-magic"></i> Realtime Generation</li>
+          <li><i class="fas fa-pen-nib"></i> Canvas Editor</li>
+          <li><i class="fas fa-expand"></i> Universal Upscaler</li>
+        </ul>
+      </div>
+      <div class="sidebar-section" style="margin-top:1.5rem;">
+        <h4>Advanced</h4>
+        <ul>
+          <li>Settings</li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+  <div class="main-content">
+    <div class="top-section">
+      <div class="featured-guides">
+        <div class="featured-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600" alt="Guide 1">
+          <div class="featured-label">Upscaling</div>
+          <div class="featured-title">Your Images with AI</div>
+          <div class="featured-desc">Enhance your blouse designs with advanced upscaling.</div>
+        </div>
+        <div class="featured-card">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=600" alt="Guide 2">
+          <div class="featured-label" style="background:var(--accent2);">How to Use</div>
+          <div class="featured-title">Style Reference</div>
+          <div class="featured-desc">Learn how to use style references for unique creations.</div>
+        </div>
+        <div class="featured-card">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=600" alt="Guide 3">
+          <div class="featured-label" style="background:var(--accent3);">Creating</div>
+          <div class="featured-title">Consistent Characters</div>
+          <div class="featured-desc">Maintain consistency in your blouse model characters.</div>
+        </div>
+      </div>
+      <div class="section-title">Community Creations</div>
+      <div class="community-filters">
+        <button class="active" data-filter="all">Trending</button>
+        <button data-filter="all">All</button>
+        <button data-filter="upscaled">Upscaled</button>
+        <button data-filter="video">Video</button>
+        <button data-filter="photography">Photography</button>
+        <button data-filter="animals">Animals</button>
+        <button data-filter="anime">Anime</button>
+      </div>
+    </div>
+    <div class="masonry-grid" id="masonryGrid">
+      <!-- Masonry items will be injected by JS -->
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close" id="lightboxClose">&times;</div>
+    <div class="lightbox-content" id="lightboxContent">
+      <img src="" alt="" id="lightboxImg">
+      <div class="masonry-title" id="lightboxTitle"></div>
+      <div class="masonry-text" id="lightboxText"></div>
+    </div>
+  </div>
+  <script>
+    // Sample data for the grid
+    const gridData = [
+      {
+        img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=600',
+        title: 'Temple Elegance',
+        meta: 'Trending',
+        text: 'A blouse inspired by South Indian temple art, with gold threadwork.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600',
+        title: 'Royal Wedding',
+        meta: 'Wedding',
+        text: 'A regal wedding blouse with intricate zari and beadwork.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=600',
+        title: 'Classic Lotus',
+        meta: 'Traditional',
+        text: 'Lotus motifs and pastel shades for a timeless look.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=600',
+        title: 'Peacock Parade',
+        meta: 'Animals',
+        text: 'Peacock feather embroidery for a vibrant festive style.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600',
+        title: 'Anime Bride',
+        meta: 'Anime',
+        text: 'A playful anime-inspired blouse for modern brides.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=600',
+        title: 'Sunset Sari',
+        meta: 'Photography',
+        text: 'A blouse that captures the colors of a sunset.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=600',
+        title: 'Floral Dream',
+        meta: 'Trending',
+        text: 'Soft florals and delicate lace for a dreamy look.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600',
+        title: 'Majestic Lion',
+        meta: 'Animals',
+        text: 'A bold lion motif for a statement piece.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=600',
+        title: 'Celestial Blue',
+        meta: 'Upscaled',
+        text: 'Celestial patterns in shimmering blue.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=600',
+        title: 'Garden Swing',
+        meta: 'Photography',
+        text: 'A blouse for garden parties and outdoor celebrations.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600',
+        title: 'Anime Cat',
+        meta: 'Anime',
+        text: 'Cute cat embroidery in anime style.'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=600',
+        title: 'Mystic Forest',
+        meta: 'Video',
+        text: 'A blouse inspired by the deep mystic forests of India.'
+      }
+    ];
+    // Render grid
+    function renderGrid(filter = 'all') {
+      const grid = document.getElementById('masonryGrid');
+      grid.innerHTML = '';
+      gridData.forEach(item => {
+        if (filter === 'all' || item.meta.toLowerCase() === filter) {
+          const div = document.createElement('div');
+          div.className = 'masonry-item';
+          div.innerHTML = `
+            <img src="${item.img}" alt="${item.title}">
+            <div class="masonry-desc">
+              <div class="masonry-title">${item.title}</div>
+              <div class="masonry-meta">${item.meta}</div>
+              <div class="masonry-text">${item.text}</div>
+            </div>
+          `;
+          div.addEventListener('click', () => openLightbox(item));
+          grid.appendChild(div);
+        }
+      });
+    }
+    // Lightbox logic
+    function openLightbox(item) {
+      document.getElementById('lightboxImg').src = item.img;
+      document.getElementById('lightboxTitle').textContent = item.title;
+      document.getElementById('lightboxText').textContent = item.text;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    document.getElementById('lightboxClose').onclick = closeLightbox;
+    document.getElementById('lightbox').onclick = function(e) {
+      if (e.target === this) closeLightbox();
+    };
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+    // Filter logic
+    document.querySelectorAll('.community-filters button').forEach(btn => {
+      btn.onclick = function() {
+        document.querySelectorAll('.community-filters button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderGrid(this.dataset.filter);
+      };
+    });
+    // Initial render
+    renderGrid();
+  </script>
+</body>
+</html> 

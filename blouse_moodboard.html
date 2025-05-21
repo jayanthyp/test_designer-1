@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blouse Moodboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --sidebar-bg: rgba(24,26,32,0.85);
+      --main-bg: #181622;
+      --card-bg: rgba(35,36,58,0.95);
+      --accent1: #ff6fd8;
+      --accent2: #3813c2;
+      --accent3: #43e7ad;
+      --accent4: #f9d423;
+      --text-main: #fff;
+      --text-secondary: #b0b3c6;
+      --button-bg: rgba(255,255,255,0.08);
+      --button-active: linear-gradient(90deg, #ff6fd8 0%, #3813c2 100%);
+      --border-radius: 18px;
+      --transition: 0.2s;
+      --glass: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--main-bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      z-index: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 80% 10%, #ff6fd855 0%, transparent 60%),
+                  radial-gradient(circle at 10% 80%, #43e7ad44 0%, transparent 60%),
+                  linear-gradient(120deg, #3813c2 0%, #ff6fd8 100%);
+      opacity: 0.25;
+      pointer-events: none;
+    }
+    .sparkle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      width: 12px; height: 12px;
+      background: radial-gradient(circle, #fff7 60%, transparent 100%);
+      border-radius: 50%;
+      animation: sparkleMove 8s linear infinite;
+    }
+    @keyframes sparkleMove {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateY(-120vh) scale(0.7); opacity: 0; }
+    }
+    .sidebar {
+      width: 260px;
+      background: var(--sidebar-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.2rem 1.2rem 1.2rem;
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+      box-shadow: 2px 0 24px #0002;
+      border-right: 1.5px solid #fff2;
+      backdrop-filter: blur(12px);
+      justify-content: flex-start;
+    }
+    .sidebar .profile {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+    }
+    .sidebar .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6fd8 0%, #3813c2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 2px 12px #ff6fd855;
+      border: 2.5px solid #fff3;
+    }
+    .sidebar .profile-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar .profile-info .greeting {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      font-weight: 600;
+    }
+    .sidebar .profile-info .saved {
+      color: var(--accent1);
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      margin-bottom: 2.2rem;
+      margin-top: 0.5rem;
+      user-select: none;
+      min-height: 80px;
+    }
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff6fd8 0%, #3813c2 100%);
+      border-radius: 50%;
+      box-shadow: 0 2px 12px #ff6fd855;
+      position: relative;
+    }
+    .brand-logo svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+    .brand-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #fff;
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      text-shadow: none;
+      line-height: 1.1;
+      filter: none;
+      position: relative;
+      text-align: center;
+      margin-top: 0.2rem;
+      word-break: break-word;
+      max-width: 150px;
+    }
+    .sidebar nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      margin-bottom: 2.5rem;
+    }
+    .sidebar nav ul li {
+      margin-bottom: 1.2rem;
+    }
+    .sidebar nav ul li a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 30px;
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform 0.18s;
+      font-weight: 600;
+      background: var(--button-bg);
+      box-shadow: 0 2px 8px #ff6fd822;
+      position: relative;
+    }
+    .sidebar nav ul li a.active, .sidebar nav ul li a:hover {
+      background: var(--button-active);
+      color: #fff;
+      box-shadow: 0 2px 16px #ff6fd855;
+      transform: scale(1.04);
+    }
+    .sidebar .add-new {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sidebar .add-btn {
+      background: var(--button-active);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 0.7rem 2.2rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 16px #ff6fd855;
+      margin-top: 2.5rem;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .sidebar .add-btn:hover {
+      background: linear-gradient(90deg, #3813c2 0%, #ff6fd8 100%);
+      box-shadow: 0 4px 24px #ff6fd855;
+      transform: scale(1.05);
+    }
+    .main-content {
+      margin-left: 260px;
+      width: 100%;
+      background: transparent;
+      min-height: 100vh;
+      padding-bottom: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .top-section {
+      padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .welcome-banner {
+      background: linear-gradient(90deg, #ff6fd8 0%, #3813c2 100%);
+      color: #fff;
+      border-radius: 18px;
+      padding: 1.2rem 2rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 2px 16px #ff6fd855;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-banner i {
+      font-size: 1.7rem;
+      color: #fff;
+      opacity: 0.8;
+    }
+    .section-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #fff;
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+      text-shadow: none;
+      user-select: none;
+      text-align: left;
+    }
+    .blouse-filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .blouse-filters button {
+      background: var(--button-bg);
+      color: var(--text-secondary);
+      border: none;
+      border-radius: 20px;
+      padding: 0.5rem 1.3rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), box-shadow var(--transition), transform 0.18s;
+      font-weight: 600;
+      box-shadow: 0 2px 8px #ff6fd822;
+    }
+    .blouse-filters button.active, .blouse-filters button:hover {
+      background: var(--button-active);
+      color: #fff;
+      box-shadow: 0 2px 16px #ff6fd855;
+      transform: scale(1.06);
+    }
+    .masonry-grid {
+      column-count: 4;
+      column-gap: 1.5rem;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    @media (max-width: 1200px) {
+      .masonry-grid { column-count: 3; }
+    }
+    @media (max-width: 900px) {
+      .masonry-grid { column-count: 2; }
+      .main-content { margin-left: 0; }
+      .sidebar { position: static; width: 100%; min-height: auto; flex-direction: row; padding: 1rem; }
+    }
+    @media (max-width: 600px) {
+      .masonry-grid { column-count: 1; }
+      .top-section { padding: 1rem; }
+    }
+    .masonry-item {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      width: 100%;
+      box-shadow: 0 2px 12px #ff6fd822;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+      position: relative;
+    }
+    .masonry-item:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 4px 24px #ff6fd855;
+    }
+    .masonry-item img {
+      width: 100%;
+      display: block;
+      border-radius: var(--border-radius);
+      transition: filter 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px #ff6fd822;
+    }
+    .masonry-item:hover img {
+      filter: brightness(1.1) saturate(1.2);
+      box-shadow: 0 4px 24px #ff6fd855;
+    }
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.95);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 32px #ff6fd8aa;
+      border: 3px solid #ff6fd8;
+      background: #181a20;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lightbox-content img {
+      max-width: 70vw;
+      max-height: 60vh;
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 24px #ff6fd855;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10001;
+      transition: color var(--transition);
+    }
+    .lightbox-close:hover { color: #ff6fd8; }
+  </style>
+</head>
+<body>
+  <!-- Sparkles -->
+  <div class="sparkle" style="left:10vw;top:90vh;animation-delay:0s;"></div>
+  <div class="sparkle" style="left:30vw;top:95vh;animation-delay:1.2s;"></div>
+  <div class="sparkle" style="left:60vw;top:92vh;animation-delay:2.1s;"></div>
+  <div class="sparkle" style="left:80vw;top:98vh;animation-delay:0.7s;"></div>
+  <aside class="sidebar">
+    <div class="profile">
+      <div class="avatar"><i class="fas fa-user"></i></div>
+      <div class="profile-info">
+        <span class="greeting">Hi, Priya!</span>
+        <span class="saved"><i class="fas fa-heart"></i> Saved: 8</span>
+      </div>
+    </div>
+    <div class="brand">
+      <span class="brand-logo">
+        <!-- SVG hanger icon -->
+        <svg viewBox="0 0 32 32" fill="none"><path d="M16 6c0 2.5 2 4 4 4s4-1.5 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M16 6v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M4 26c0-4.5 6-8 12-8s12 3.5 12 8" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </span>
+      <span class="brand-name">Blouse Moodboard</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#"><i class="fas fa-bookmark"></i> Library</a></li>
+        <li><a href="#"><i class="fas fa-image"></i> Image</a></li>
+      </ul>
+    </nav>
+    <div class="add-new">
+      <button class="add-btn"><i class="fas fa-plus"></i> Add New</button>
+    </div>
+  </aside>
+  <div class="main-content">
+    <div class="top-section">
+      <div class="welcome-banner"><i class="fas fa-sparkles"></i>Welcome to your Blouse Moodboard! Get inspired by the latest trends and save your favorites for your next look.</div>
+      <div class="section-title">Blouse Moodboard</div>
+      <div class="blouse-filters">
+        <button class="active" data-filter="all">All</button>
+        <button data-filter="saree-party">Saree Party</button>
+        <button data-filter="boho-chic">Boho Chic</button>
+        <button data-filter="temple-muse">Temple Muse</button>
+        <button data-filter="bridal-glam">Bridal Glam</button>
+        <button data-filter="festive-pop">Festive Pop</button>
+        <button data-filter="minimal-muse">Minimal Muse</button>
+        <button data-filter="statement-sleeves">Statement Sleeves</button>
+      </div>
+    </div>
+    <div class="masonry-grid" id="masonryGrid">
+      <!-- Masonry items will be injected by JS -->
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close" id="lightboxClose">&times;</div>
+    <div class="lightbox-content" id="lightboxContent">
+      <img src="" alt="Blouse" id="lightboxImg">
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script>
+    // This script will now load data from data.csv
+
+    let moodboardData = []; // Use a new variable to store data from CSV
+
+    // Function to fetch and parse the CSV file
+    async function loadMoodboardData(csvFilePath) {
+      try {
+        const response = await fetch(csvFilePath);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const csvText = await response.text();
+
+        PapaParse.parse(csvText, {
+          header: true, // Treat the first row as headers
+          skipEmptyLines: true,
+          complete: function(results) {
+            // Assuming CSV headers are 'image_name', 'path', 'description'
+            moodboardData = results.data.map(item => ({
+              name: item.image_name || 'Untitled',
+              img: item.path, // Use the local path from the CSV
+              category: item.category || 'uncategorized', // Add a default category if missing
+              description: item.description || ''
+            }));
+            console.log('Data loaded:', moodboardData);
+            // Once data is loaded, render the grid
+            renderGrid();
+            // Update filters based on loaded data
+            updateFilters();
+          },
+          error: function(err) {
+            console.error('Error parsing CSV:', err);
+          }
+        });
+
+      } catch (error) {
+        console.error('Error fetching or processing CSV:', error);
+      }
+    }
+
+    // Update filter buttons based on available categories in loaded data
+    function updateFilters() {
+        const filterContainer = document.querySelector('.blouse-filters');
+        // Keep the existing filter buttons for default categories
+        // Or clear and regenerate based on CSV data
+        // For now, let's stick to the original filter buttons for simplicity and visual consistency
+        // If you want dynamic filters from CSV, we'd need to regenerate them here.
+        // For this request, we keep the existing frontend appearance.
+
+         // Example of how to generate dynamic filters if needed (commented out to maintain original UI)
+        /*
+        const categoriesFromData = new Set(moodboardData.map(item => item.category));
+        const allButton = filterContainer.querySelector('[data-filter="all"]');
+        filterContainer.innerHTML = ''; // Clear existing buttons
+        filterContainer.appendChild(allButton); // Add back the 'All' button
+
+        categoriesFromData.forEach(category => {
+           if (category && category !== 'uncategorized') { // Avoid adding empty or default category as a filter button
+               const button = document.createElement('button');
+               button.textContent = category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+               button.dataset.filter = category;
+               button.onclick = function() {
+                   document.querySelectorAll('.blouse-filters button').forEach(b => b.classList.remove('active'));
+                   this.classList.add('active');
+                   renderGrid(this.dataset.filter);
+               };
+               filterContainer.appendChild(button);
+           }
+        });
+        */
+    }
+
+    // Modify the renderGrid function to use the loaded moodboardData
+    function renderGrid(filter = 'all') {
+      const grid = document.getElementById('masonryGrid');
+      grid.innerHTML = '';
+
+      const itemsToRender = filter === 'all'
+        ? moodboardData
+        : moodboardData.filter(item => item.category === filter);
+
+      itemsToRender.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'masonry-item';
+        div.innerHTML = `<img src="${item.img}" alt="${item.name || 'Blouse'}">`; // Use item.name for alt text
+        div.addEventListener('click', () => openLightbox(item));
+        grid.appendChild(div);
+      });
+    }
+
+    // Modify the openLightbox function to use data from moodboardData
+    function openLightbox(item) {
+      const lightboxContent = document.getElementById('lightboxContent');
+      // Clear previous content
+      lightboxContent.innerHTML = '';
+
+      const imgElement = document.createElement('img');
+      imgElement.src = item.img;
+      imgElement.alt = item.name || 'Blouse';
+      imgElement.id = 'lightboxImg';
+      lightboxContent.appendChild(imgElement);
+
+      // Add details from CSV if available
+      const detailsDiv = document.createElement('div');
+      detailsDiv.className = 'lightbox-details'; // Add a class for potential styling
+      detailsDiv.style.marginTop = '1rem';
+      detailsDiv.style.textAlign = 'center';
+
+      const nameElement = document.createElement('h3');
+      nameElement.textContent = item.name || 'Untitled';
+      detailsDiv.appendChild(nameElement);
+
+      if (item.description) {
+        const descElement = document.createElement('p');
+        descElement.textContent = item.description;
+        detailsDiv.appendChild(descElement);
+      }
+
+      if (item.category) {
+           const categoryElement = document.createElement('p');
+           categoryElement.textContent = `Category: ${item.category}`;
+           detailsDiv.appendChild(categoryElement);
+      }
+
+      lightboxContent.appendChild(detailsDiv);
+
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+
+    document.getElementById('lightboxClose').onclick = closeLightbox;
+    document.getElementById('lightbox').onclick = function(e) {
+      if (e.target === this) closeLightbox();
+    };
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Filter logic remains the same, it now operates on the moodboardData loaded from CSV
+    document.querySelectorAll('.blouse-filters button').forEach(btn => {
+      btn.onclick = function() {
+        document.querySelectorAll('.blouse-filters button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderGrid(this.dataset.filter);
+      };
+    });
+
+    // Load data from the CSV file when the page loads
+    loadMoodboardData('data.csv');
+
+  </script>
+</body>
+</html> 
